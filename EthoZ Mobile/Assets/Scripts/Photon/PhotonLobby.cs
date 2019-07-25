@@ -8,7 +8,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 {
     public static PhotonLobby lobby;
 
-    public GameObject battleButton;
+    public GameObject quickJoinButton;
     public GameObject cancelButton;
 
     private void Awake()
@@ -25,24 +25,27 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("Player has connected to the Photon master server");
-        battleButton.SetActive(true);
+        PhotonNetwork.AutomaticallySyncScene = true;
+        quickJoinButton.SetActive(true);
     }
 
-    public void OnBattleButtonClicked()
+    public void OnQuickJoinButtonClicked()
     {
-        battleButton.SetActive(false);
-        PhotonNetwork.JoinRandomRoom();
+        Debug.Log("Quick Join Button Clicked");
+        quickJoinButton.SetActive(false);
+        PhotonNetwork.JoinRandomRoom(); //Trying to join a random room.
         cancelButton.SetActive(true);
     }
 
-    public override void OnJoinRandomFailed(short returnCode, string message)
+    public override void OnJoinRandomFailed(short returnCode, string message) //When JoinRandomRoom fails, this function will be called.
     {
         Debug.Log("Tried to join a random game but failed. There must be no open games available");
         CreateRoom();
     }
 
-    void CreateRoom()
+    void CreateRoom() //Trying to create a room that does not already exist.
     {
+        Debug.Log("Trying to create a new Room");
         int randomRoomName = Random.Range(0, 10000);
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 20 };
         PhotonNetwork.CreateRoom("Room" + randomRoomName, roomOps);
@@ -51,14 +54,21 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.Log("Tried to create a new room but failed, there must already be a room with the same name");
-        CreateRoom();
+        CreateRoom(); //Retrying to create a room that does not already exist.
     }
 
     public void OnCancelButtonClicked()
     {
         Debug.Log("Cancel button has been clicked");
         cancelButton.SetActive(false);
-        battleButton.SetActive(true);
+        quickJoinButton.SetActive(true);
+        PhotonNetwork.LeaveRoom();
+        Debug.Log("Player has left room");
+    }
+
+    public override void OnJoinedRoom()
+    {
+        Debug.Log("We are now in a room");
     }
 
     // Update is called once per frame
