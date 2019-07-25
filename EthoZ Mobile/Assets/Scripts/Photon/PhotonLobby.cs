@@ -66,11 +66,6 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         Debug.Log("Player has left room");
     }
 
-    public override void OnJoinedRoom()
-    {
-        Debug.Log("We are now in a room");
-    }
-
     // Update is called once per frame
     void Update()
     {
