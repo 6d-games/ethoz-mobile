@@ -10,7 +10,7 @@ Character Pack: Free Sample by Supercyan on Unity Asset Store
 
 Low Poly Toon Chests by UNIQUEPLAYER on Unity Asset Store
 
-Blood Blocks Font by Behance on befonts.com
+Blood Blocks Font by Behance on www.befonts.com
 
 Hand Painted Textures by ALEX LUSTH on Unity Asset Store
 
@@ -22,4 +22,6 @@ Low Poly Forest Pack by DAVID STENFORS on Unity Asset Store
 
 Snowy Low-Poly Trees by FALSE WISP STUDIOS on Unity Asset Store
 
-Homemade Apple Font by Font Diner on fontspace.com
+Homemade Apple Font by Font Diner on www.fontspace.com
+
+OnScreenControls by Kenney on www.Kenney.nl
