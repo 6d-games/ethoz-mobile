@@ -25,3 +25,6 @@ Snowy Low-Poly Trees by FALSE WISP STUDIOS on Unity Asset Store
 Homemade Apple Font by Font Diner on www.fontspace.com
 
 OnScreenControls by Kenney on www.Kenney.nl
+
+Standard Assets by Unity Technologies on Unity Asset Store
+
