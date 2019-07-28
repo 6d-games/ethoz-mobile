@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class CustomThirdPersonController : MonoBehaviour
 {
-    public FixedJoystick LeftJoystick;
-    public FixedButton JumpButton;
-    public FixedTouchField TouchField;
+    private FixedJoystick LeftJoystick;
+    private FixedButton JumpButton;
+    private FixedTouchField TouchField;
 
     protected Rigidbody Rigidbody;
     private PhotonView PV;
@@ -24,6 +24,10 @@ public class CustomThirdPersonController : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         Rigidbody = GetComponent<Rigidbody>();
+
+        LeftJoystick = FindObjectOfType<FixedJoystick>();
+        JumpButton = FindObjectOfType<FixedButton>();
+        TouchField = FindObjectOfType<FixedTouchField>();
     }
 
     // Update is called once per frame

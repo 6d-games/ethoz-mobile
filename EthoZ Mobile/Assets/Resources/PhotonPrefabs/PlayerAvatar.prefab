@@ -798,9 +798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeec9a1f422b0c64aa54de0c13d9a137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftJoystick: {fileID: 0}
-  JumpButton: {fileID: 0}
-  TouchField: {fileID: 0}
 --- !u!1 &6625812594975259870
 GameObject:
   m_ObjectHideFlags: 0
