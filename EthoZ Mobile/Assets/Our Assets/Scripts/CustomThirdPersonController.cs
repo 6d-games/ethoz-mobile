@@ -10,6 +10,7 @@ public class CustomThirdPersonController : MonoBehaviour
     private FixedTouchField TouchField;
 
     protected Rigidbody Rigidbody;
+    protected PlayerActions PA;
     private PhotonView PV;
 
     protected float CameraAngleY;
@@ -24,6 +25,7 @@ public class CustomThirdPersonController : MonoBehaviour
     {
         PV = GetComponent<PhotonView>();
         Rigidbody = GetComponent<Rigidbody>();
+        PA = GetComponent<PlayerActions>();
 
         LeftJoystick = FindObjectOfType<FixedJoystick>();
         JumpButton = FindObjectOfType<FixedButton>();
@@ -45,6 +47,21 @@ public class CustomThirdPersonController : MonoBehaviour
 
             Camera.main.transform.position = transform.position + Quaternion.AngleAxis(CameraAngleY, Vector3.up) * new Vector3(0, 3, 4);
             Camera.main.transform.rotation = Quaternion.LookRotation(transform.position + Vector3.up * 2f - Camera.main.transform.position, Vector3.up);
+
+            if(Rigidbody.velocity.magnitude > 3f)
+            {
+                PA.Run();
+            }
+
+            if (Rigidbody.velocity.magnitude > 0.5f && Rigidbody.velocity.magnitude < 3f)
+            {
+                PA.Walk();
+            }
+
+            if(Rigidbody.velocity.magnitude == 0f)
+            {
+                PA.Idle();
+            }
         }
     }
 }
