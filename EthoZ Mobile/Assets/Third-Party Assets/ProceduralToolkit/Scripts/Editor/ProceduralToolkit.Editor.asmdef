@@ -1,0 +1,12 @@
+{
+    "name": "ProceduralToolkit.Editor",
+    "references": [
+        "ProceduralToolkit"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false
+}

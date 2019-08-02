@@ -2,7 +2,7 @@
 
 public class TerrainGenerator : MonoBehaviour
 {
-    public int depth = 20;
+    public int depth = 40;
 
     public int width = 256;
     public int height = 256;
@@ -15,6 +15,8 @@ public class TerrainGenerator : MonoBehaviour
     void Start()
     {
         Terrain terrain = GetComponent<Terrain>();
+
+        scale = Random.Range(5f, 8f);
 
         offsetX = Random.Range(0f, 9999f);
         offsetY = Random.Range(0f, 9999f);
