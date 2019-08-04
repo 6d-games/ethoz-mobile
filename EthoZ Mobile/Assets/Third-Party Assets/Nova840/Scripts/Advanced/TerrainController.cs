@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun; //Added by 6D Games
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -7,6 +8,12 @@ public class TerrainController : MonoBehaviour {
 
     [SerializeField]            // This is 
     private float uvScale = 1;  // a new variable that needed to be added
+    [SerializeField]
+    private PhotonView PV; //Added by 6D Games
+    [SerializeField]
+    private Transform photonPlayerPrefab; //Added by 6D Games
+    [SerializeField]
+    private PhotonView photonPlayerPrefabPV; //Added by 6D Games
     [SerializeField]
     private GameObject terrainTilePrefab = null;
     [SerializeField]
@@ -62,6 +69,18 @@ public class TerrainController : MonoBehaviour {
     }
 
     private void Start() {
+        playerTransform = GetComponent<Transform>(); //Added by 6D Games
+        PV = GetComponent<PhotonView>(); //Added by 6D Games
+        water = GameObject.Find("WaterPlane").transform;
+
+        photonPlayerPrefabPV = GameObject.Find("PhotonPlayerPrefab(Clone)").GetComponent<PhotonView>();
+
+        if (photonPlayerPrefabPV.IsMine)
+        {
+            photonPlayerPrefab = photonPlayerPrefabPV.gameObject.transform.parent;
+        }
+
+
         InitialLoad();
     }
 
@@ -71,6 +90,7 @@ public class TerrainController : MonoBehaviour {
         Level = new GameObject("Level").transform;
         water.parent = Level;
         playerTransform.parent = Level;
+        photonPlayerPrefab.parent = Level;
         foreach (Transform t in gameTransforms)
             t.parent = Level;
 
@@ -84,47 +104,54 @@ public class TerrainController : MonoBehaviour {
     }
 
     private void Update() {
-        //save the tile the player is on
-        Vector2 playerTile = TileFromPosition(playerTransform.localPosition);
-        //save the tiles of all tracked objects in gameTransforms (including the player)
-        List<Vector2> centerTiles = new List<Vector2>();
-        centerTiles.Add(playerTile);
-        foreach (Transform t in gameTransforms)
-            centerTiles.Add(TileFromPosition(t.localPosition));
+        if (PV.IsMine) //Added by 6D Games
+        {
+            //save the tile the player is on
+            Vector2 playerTile = TileFromPosition(playerTransform.localPosition);
+            //save the tiles of all tracked objects in gameTransforms (including the player)
+            List<Vector2> centerTiles = new List<Vector2>();
+            centerTiles.Add(playerTile);
+            foreach (Transform t in gameTransforms)
+                centerTiles.Add(TileFromPosition(t.localPosition));
 
-        //if no tiles exist yet or tiles should change
-        if (previousCenterTiles == null || HaveTilesChanged(centerTiles)) {
-            List<GameObject> tileObjects = new List<GameObject>();
-            //activate new tiles
-            foreach (Vector2 tile in centerTiles) {
-                bool isPlayerTile = tile == playerTile;
-                int radius = isPlayerTile ? radiusToRender : 1;
-                for (int i = -radius; i <= radius; i++)
-                    for (int j = -radius; j <= radius; j++)
-                        ActivateOrCreateTile((int)tile.x + i, (int)tile.y + j, tileObjects);
-                if (isPlayerTile)
-                    water.localPosition = new Vector3(tile.x * terrainSize.x, water.localPosition.y, tile.y * terrainSize.z);
-            }
-            //deactivate old tiles
-            foreach (GameObject g in previousTileObjects)
-                if (!tileObjects.Contains(g))
-                    g.SetActive(false);
-
-            //destroy inactive tiles if they're too far away
-            List<Vector2> keysToRemove = new List<Vector2>();//can't remove item when inside a foreach loop
-            foreach (KeyValuePair<Vector2, GameObject> kv in terrainTiles) {
-                if (Vector3.Distance(playerTransform.position, kv.Value.transform.position) > destroyDistance && !kv.Value.activeSelf) {
-                    keysToRemove.Add(kv.Key);
-                    Destroy(kv.Value);
+            //if no tiles exist yet or tiles should change
+            if (previousCenterTiles == null || HaveTilesChanged(centerTiles))
+            {
+                List<GameObject> tileObjects = new List<GameObject>();
+                //activate new tiles
+                foreach (Vector2 tile in centerTiles)
+                {
+                    bool isPlayerTile = tile == playerTile;
+                    int radius = isPlayerTile ? radiusToRender : 1;
+                    for (int i = -radius; i <= radius; i++)
+                        for (int j = -radius; j <= radius; j++)
+                            ActivateOrCreateTile((int)tile.x + i, (int)tile.y + j, tileObjects);
+                    if (isPlayerTile)
+                        water.localPosition = new Vector3(tile.x * terrainSize.x, water.localPosition.y, tile.y * terrainSize.z);
                 }
+                //deactivate old tiles
+                foreach (GameObject g in previousTileObjects)
+                    if (!tileObjects.Contains(g))
+                        g.SetActive(false);
+
+                //destroy inactive tiles if they're too far away
+                List<Vector2> keysToRemove = new List<Vector2>();//can't remove item when inside a foreach loop
+                foreach (KeyValuePair<Vector2, GameObject> kv in terrainTiles)
+                {
+                    if (Vector3.Distance(playerTransform.position, kv.Value.transform.position) > destroyDistance && !kv.Value.activeSelf)
+                    {
+                        keysToRemove.Add(kv.Key);
+                        Destroy(kv.Value);
+                    }
+                }
+                foreach (Vector2 key in keysToRemove)
+                    terrainTiles.Remove(key);
+
+                previousTileObjects = new List<GameObject>(tileObjects);
             }
-            foreach (Vector2 key in keysToRemove)
-                terrainTiles.Remove(key);
 
-            previousTileObjects = new List<GameObject>(tileObjects);
+            previousCenterTiles = centerTiles.ToArray();
         }
-
-        previousCenterTiles = centerTiles.ToArray();
     }
 
     //Helper methods below

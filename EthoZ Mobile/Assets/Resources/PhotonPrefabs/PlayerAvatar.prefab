@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 1465982609079204345}
   - component: {fileID: 5236013058635223579}
   - component: {fileID: -5625978935798588769}
-  - component: {fileID: -5465566194845822149}
+  - component: {fileID: -4053452562416706435}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
---- !u!114 &-5465566194845822149
+--- !u!114 &-4053452562416706435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
