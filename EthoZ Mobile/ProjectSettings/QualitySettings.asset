@@ -217,7 +217,7 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
-    Android: 2
+    Android: 5
     Lumin: 5
     Nintendo 3DS: 5
     Nintendo Switch: 5

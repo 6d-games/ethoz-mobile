@@ -32,8 +32,4 @@ Sci Fi Soldier by YUROV VIKTOR on Unity Asset Store
 
 EasyRoads3D Free v3 by ANDASOFT on Unity Asset Store
 
-Procedural Toolkit by SYOMUS on Unity Asset Store 
-
-Procedural Scripts (Simple) by Nova840 on YouTube
-
-Procedural Scripts (Advanced) by Nova840 on YouTube
+Post Processing Stack by UNITY TECHNOLOGIES on Unity Asset Store

@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 1465982609079204345}
   - component: {fileID: 5236013058635223579}
   - component: {fileID: -5625978935798588769}
-  - component: {fileID: -4053452562416706435}
+  - component: {fileID: 6760806598439687326}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -858,7 +858,7 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
---- !u!114 &-4053452562416706435
+--- !u!114 &6760806598439687326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -867,47 +867,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6625812594975259868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14c0d08589a3c9143bdf56735d251afc, type: 3}
+  m_Script: {fileID: 11500000, guid: 704a38f78b71d794283b44e4ac1870b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PV: {fileID: 0}
-  terrainTilePrefab: {fileID: 7791072708405782339, guid: 0d521ae35756dee409c7b5c7f6e95e66,
-    type: 3}
-  terrainSize: {x: 20, y: 1, z: 20}
-  gradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 1, b: 1, a: 1}
-    key1: {r: 1, g: 1, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  noiseScale: 3
-  cellSize: 1
-  radiusToRender: 5
-  gameTransforms: []
-  playerTransform: {fileID: 0}
+  plane: {fileID: 3863267660106097671, guid: c53c2519f8178a5449eab7eb629eae94, type: 3}
 --- !u!1 &6625812594975259870
 GameObject:
   m_ObjectHideFlags: 0
