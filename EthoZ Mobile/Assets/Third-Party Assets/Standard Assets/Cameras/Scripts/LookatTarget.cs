@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.Cameras
+namespace Devdog.InventoryPro.UnityStandardAssets
 {
     public class LookatTarget : AbstractTargetFollower
     {

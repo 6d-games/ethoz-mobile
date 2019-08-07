@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aee9c35122abd23458ddb18edd496d6a, type: 3}
+  m_Name: ItemDatabase
+  m_EditorClassIdentifier: 
+  plyAttributes: []
+  items: []
+  itemRarities: []
+  itemCategories:
+  - ID: 0
+    name: None
+    cooldownTime: 0
+    _onlyAllowTypes: []
+  properties: []
+  equipStats: []
+  equipStatTypes: []
+  equipTypes: []
+  craftingCategories:
+  - ID: 0
+    name: Test category
+    description: abbc
+    alsoScanBankForRequiredItems: 1
+    forceSaveInCollection: {fileID: 0}
+    rows: 3
+    cols: 3
+    blueprints:
+    - ID: 1
+      indexInCategory: 0
+      useItemResultNameAndDescription: 1
+      customName: 
+      customDescription: 
+      requiredItems: []
+      playerLearnedBlueprint: 1
+      craftCostPrice: 0
+      successChanceFactor: 1
+      itemResult: {fileID: 0}
+      itemResultCount: 1
+      craftingTimeDuration: 0
+      craftingTimeSpeedupFactor: 1
+      craftingTimeSpeedupMax: 1
+      blueprintLayouts:
+      - ID: 0
+        enabled: 1
+        rows:
+        - index: 0
+          columns:
+          - index: 0
+            item: {fileID: 0}
+            amount: 0
+          - index: 1
+            item: {fileID: 0}
+            amount: 0
+          - index: 2
+            item: {fileID: 0}
+            amount: 0
+        - index: 1
+          columns:
+          - index: 0
+            item: {fileID: 0}
+            amount: 0
+          - index: 1
+            item: {fileID: 0}
+            amount: 0
+          - index: 2
+            item: {fileID: 0}
+            amount: 0
+        - index: 2
+          columns:
+          - index: 0
+            item: {fileID: 0}
+            amount: 0
+          - index: 1
+            item: {fileID: 0}
+            amount: 0
+          - index: 2
+            item: {fileID: 0}
+            amount: 0
+  currencies: []
