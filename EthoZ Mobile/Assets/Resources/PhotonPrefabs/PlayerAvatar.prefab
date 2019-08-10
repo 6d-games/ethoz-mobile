@@ -699,7 +699,6 @@ GameObject:
   - component: {fileID: 1465982609079204345}
   - component: {fileID: 5236013058635223579}
   - component: {fileID: -5625978935798588769}
-  - component: {fileID: 6760806598439687326}
   m_Layer: 0
   m_Name: PlayerAvatar
   m_TagString: Untagged
@@ -858,19 +857,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
---- !u!114 &6760806598439687326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6625812594975259868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 704a38f78b71d794283b44e4ac1870b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 3863267660106097671, guid: c53c2519f8178a5449eab7eb629eae94, type: 3}
 --- !u!1 &6625812594975259870
 GameObject:
   m_ObjectHideFlags: 0
