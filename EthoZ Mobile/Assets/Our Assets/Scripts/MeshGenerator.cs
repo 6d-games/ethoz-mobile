@@ -18,6 +18,9 @@ public class MeshGenerator : MonoBehaviour
     public float yScale = 1f;
     public float zScale = 1f;
 
+    public float offsetX = 100;
+    public float offsetZ = 100;
+
     public Gradient gradient;
 
     float minTerrainHeight;
@@ -26,6 +29,9 @@ public class MeshGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        offsetX = Random.Range(0f, 9999f);
+        offsetZ = Random.Range(0f, 9999f);
+
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         
@@ -42,7 +48,7 @@ public class MeshGenerator : MonoBehaviour
         {
             for(int x = 0; x <= xSize; x++)
             {
-                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 2f;
+                float y = Mathf.PerlinNoise(x * .3f + offsetX, z * .3f + offsetZ) * 2f;
                 vertices[i] = new Vector3(x, y, z);
 
                 if(y > maxTerrainHeight)

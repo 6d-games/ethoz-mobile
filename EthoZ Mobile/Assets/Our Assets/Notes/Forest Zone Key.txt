@@ -1,0 +1,3 @@
+dark areas = buildings
+grey areas = rocks, little shrubs, trees
+lighter areas  = grass and leaves
